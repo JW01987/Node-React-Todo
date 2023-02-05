@@ -10,9 +10,8 @@ router.post("/add", (req, res) => {
   });
 });
 
-router.post("/detail", (req, res) => {
-  //get으로 바꿔도 될것같음
-  Todo.findOne({ _id: req.body._id }, (err, todoData) => {
+router.get("/detail/:todoId", (req, res) => {
+  Todo.findOne({ _id: req.params.todoId }, (err, todoData) => {
     if (!todoData) {
       return res.json({
         success: false,

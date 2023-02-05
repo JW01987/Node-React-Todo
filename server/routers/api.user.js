@@ -11,6 +11,22 @@ router.post("/register", (req, res) => {
   });
 });
 
+router.post("/register/idcheck", (req, res) => {
+  User.findOne({ id: req.body.id }, (err, userData) => {
+    if (!userData) {
+      return res.json({
+        success: true,
+        message: "해당 아이디 사용가능",
+      });
+    } else {
+      return res.json({
+        success: false,
+        message: "해당 아이디 불가능",
+      });
+    }
+  });
+});
+
 router.post("/login", (req, res) => {
   User.findOne({ id: req.body.id }, (err, userData) => {
     if (!userData) {
