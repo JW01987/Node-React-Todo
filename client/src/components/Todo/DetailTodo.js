@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Auth from "../hoc/auth";
 function DetailTodo() {
   //파라미터로 뚜두 아이디 받아와서 api요청
   let todoId = "63de06218b43a1167bd82643";
@@ -18,4 +19,4 @@ function DetailTodo() {
   );
 }
 
-export default DetailTodo;
+export default Auth(DetailTodo, true);

@@ -50,7 +50,6 @@ UserSchema.methods.addToken = function (next) {
 UserSchema.statics.findToken = function (token, next) {
   var user = this;
   jwt.verify(token, jwtSecret, (err, decoded) => {
-    if (err) return next(err);
     user.findOne({ _id: decoded }, (err, data) => {
       if (err) return next(err);
       return next(null, data);

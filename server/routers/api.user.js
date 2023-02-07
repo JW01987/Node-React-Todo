@@ -49,7 +49,7 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.post("/auth", auth, (req, res) => {
+router.get("/auth", auth, (req, res) => {
   res.json({
     id: req.user.id,
     name: req.user.name,

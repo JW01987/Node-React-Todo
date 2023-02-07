@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Auth from "../hoc/auth";
 import "./color.css";
 function RegisterPage() {
+  const navigate = useNavigate();
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -21,8 +24,10 @@ function RegisterPage() {
   const [isIdCheck, setIsIdCheck] = useState(false);
 
   const onIdChangeHandler = (e) => {
+    setIsIdCheck(false);
+    setIsId(false);
     const currentId = e.target.value;
-    const idRegex = new RegExp(/([a-zA-Z][0-9]*){4,9}/g);
+    const idRegex = new RegExp(/^([a-zA-Z0-9]){4,9}$/);
     setId(currentId);
     if (!idRegex.test(currentId)) {
       setIdMsg(
@@ -30,7 +35,7 @@ function RegisterPage() {
       );
       setIsId(false);
     } else {
-      setIdMsg("올바른 아이디입니다");
+      setIdMsg("중복검사를 해야합니다");
       setIsId(true);
     }
   };
@@ -87,12 +92,20 @@ function RegisterPage() {
       setIdMsg(result.message);
     }
   };
-  const onSubmitHandler = () => {};
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    let result = await axios
+      .post("/api/user/register", { id, name, password })
+      .then((res) => res.data);
+    if (!result.success) return alert("오류가 발생했습니다");
+    alert("가입이 완료되었습니다");
+    navigate("/");
+  };
   return (
     <div>
       <div>
         <h2>회원가입 페이지</h2>
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <label htmlFor="id">아이디</label>
           <input
             placeholder="아이디를 입력하세요"
@@ -100,7 +113,9 @@ function RegisterPage() {
             id="id"
             onChange={onIdChangeHandler}
           />
-          <button onClick={idCheckHeandler}>중복검사</button>
+          <button onClick={idCheckHeandler} disabled={!isId}>
+            중복검사
+          </button>
           <span className={isId && isIdCheck ? "green" : "red"}>{idMsg}</span>
           <label htmlFor="name">이름 / 닉네임</label>
           <input
@@ -131,7 +146,6 @@ function RegisterPage() {
           </span>
           <button
             disabled={!(isId && isName && isPwd && isConfirmPwd && isIdCheck)}
-            onSubmit={onSubmitHandler}
           >
             회원가입
           </button>
@@ -141,4 +155,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default Auth(RegisterPage, false);

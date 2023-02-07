@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import Auth from "../hoc/auth";
 function MainTodoPage() {
   useEffect(() => {
     axios
@@ -28,4 +28,4 @@ function TodoList({ todo }) {
   );
 }
 
-export default MainTodoPage;
+export default Auth(MainTodoPage, true);

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import Auth from "./hoc/auth";
 function LandingPage() {
   return (
     <div>
@@ -14,4 +14,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default Auth(LandingPage, null);
