@@ -40,10 +40,13 @@ router.post("/showtodos", (req, res) => {
 });
 
 router.post("/update", (req, res) => {
+  console.log(req.body);
   Todo.findOneAndUpdate(
     { _id: req.body._id },
-    { $set: req.body.update },
+    { $set: { title: req.body.title, content: req.body.content } },
+    { returnNewDocument: true },
     (err, user) => {
+      console.log(user);
       if (err) return res.json({ success: false, message: "수정 실패" });
       return res.json({ success: true, message: "수정 성공" });
     }
@@ -65,8 +68,8 @@ router.get("/search/:searchWord", (req, res) => {
   });
 });
 
-router.post("/delete", (req, res) => {
-  Todo.findOneAndDelete({ _id: req.body._id }, (err) => {
+router.get("/delete/:todoId", (req, res) => {
+  Todo.findOneAndDelete({ _id: req.params.todoId }, (err) => {
     if (err) return res.json({ success: false, message: "삭제 실패" });
     return res.json({ success: true, message: "삭제 성공" });
   });

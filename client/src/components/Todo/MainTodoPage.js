@@ -1,19 +1,34 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Auth from "../hoc/auth";
-function MainTodoPage() {
+import { Link } from "react-router-dom";
+
+function MainTodoPage({ userData }) {
+  let [loading, setLoading] = useState(false);
   useEffect(() => {
-    axios
-      .post("/api/todo/showtodos", { userId: "63db617d1c8b1de61abfdbbd" })
-      .then((res) => setTodos(res.data.todoData));
-  }, []);
+    if (userData) {
+      axios
+        .post("/api/todo/showtodos", { userId: userData._id })
+        .then((res) => {
+          setTodos(res.data.todoData);
+          setLoading(true);
+        });
+    }
+  }, [userData]);
+
   let [todos, setTodos] = useState([]);
+
   return (
     <div>
-      <div>뚜두리스트 모임</div>
-      {todos.map((todo) => {
-        return <TodoList todo={todo} />;
-      })}
+      <h1>뚜두리스트 모임</h1>
+      {loading ? (
+        todos.map((todo) => {
+          return <TodoList todo={todo} />;
+        })
+      ) : (
+        <p>로딩중</p>
+      )}
+      <Link to="/addtodo">뚜두추가</Link>
     </div>
   );
 }
@@ -21,7 +36,7 @@ function MainTodoPage() {
 function TodoList({ todo }) {
   return (
     <div key={todo._id}>
-      <h4>{todo.title}</h4>
+      <Link to={`/detail/${todo._id}`}>{todo.title}</Link>{" "}
       {/* 제목누르면 디테일 페이지로 이동, 파라미터로 뚜두 아이디 보내기*/}
       <p>{todo.contents}</p>
     </div>

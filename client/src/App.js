@@ -4,7 +4,8 @@ import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/Login/LoginPage";
 import RegisterPage from "./components/Login/RegisterPage";
 import MainTodoPage from "./components/Todo/MainTodoPage";
-import DetailTodo from "./components/Todo/DetailTodo";
+import DetailTodo from "./components/Todo/DetailTodoPage";
+import AddTodoPage from "./components/Todo/AddTodoPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/todo" element={<MainTodoPage />} />
+      <Route path="/addtodo" element={<AddTodoPage />} />
       <Route path="/detail/:todoId" element={<DetailTodo />} />
     </Routes>
   );

@@ -51,9 +51,11 @@ router.post("/login", (req, res) => {
 
 router.get("/auth", auth, (req, res) => {
   res.json({
+    _id: req.user._id,
     id: req.user.id,
     name: req.user.name,
     image: req.user.image,
+    isAuth: true,
   });
 });
 

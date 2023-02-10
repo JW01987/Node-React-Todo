@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 const Auth = (ChildComponent, option) => {
   function AuthCheck(props) {
     const navigate = useNavigate();
+    let [userData, setUserData] = useState();
     useEffect(() => {
       axios.get("/api/user/auth").then((res) => {
+        setUserData(res.data);
         if (!res.data.isAuth) {
           //로그인하지 않음
           if (option) {
@@ -24,8 +26,8 @@ const Auth = (ChildComponent, option) => {
           }
         }
       });
-    });
-    return <ChildComponent {...props} />;
+    }, []);
+    return <ChildComponent {...props} userData={userData} />;
   }
   return AuthCheck;
 };
