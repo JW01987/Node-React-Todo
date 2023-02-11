@@ -46,7 +46,6 @@ router.post("/update", (req, res) => {
     { $set: { title: req.body.title, content: req.body.content } },
     { returnNewDocument: true },
     (err, user) => {
-      console.log(user);
       if (err) return res.json({ success: false, message: "수정 실패" });
       return res.json({ success: true, message: "수정 성공" });
     }

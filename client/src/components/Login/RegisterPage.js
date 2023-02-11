@@ -102,7 +102,7 @@ function RegisterPage() {
     navigate("/");
   };
   return (
-    <div>
+    <div className="main-div">
       <div>
         <h2>회원가입 페이지</h2>
         <form onSubmit={onSubmitHandler}>
@@ -117,7 +117,7 @@ function RegisterPage() {
             중복검사
           </button>
           <span className={isId && isIdCheck ? "green" : "red"}>{idMsg}</span>
-          <label htmlFor="name">이름 / 닉네임</label>
+          <label htmlFor="name">이름</label>
           <input
             placeholder="이름또는 닉네임을 입력하세요"
             type="text"

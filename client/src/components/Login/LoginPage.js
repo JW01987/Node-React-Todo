@@ -23,7 +23,7 @@ function LoginPage() {
     navigate("/");
   };
   return (
-    <div>
+    <div className="main-div">
       <div>
         <h2>로그인 페이지</h2>
         <form onSubmit={onSubmitHandler}>

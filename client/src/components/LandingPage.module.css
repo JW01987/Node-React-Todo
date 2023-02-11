@@ -1,0 +1,8 @@
+a {
+  color: #386fa4;
+  text-decoration: none;
+}
+
+a:nth-of-type(even) {
+  padding-left: 0.3em;
+}

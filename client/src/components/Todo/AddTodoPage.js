@@ -56,8 +56,16 @@ function AddTodoPage({ userData }) {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input onChange={onTitleChange} value={title} />
-        <input onChange={onContentChange} value={content} />
+        <input
+          onChange={onTitleChange}
+          value={title}
+          placeholder="제목을 넣어주세요"
+        />
+        <input
+          onChange={onContentChange}
+          value={content}
+          placeholder="내용을 넣어주세요"
+        />
         <button>저장</button>
       </form>
     </div>

@@ -21,7 +21,6 @@ function DetailTodo() {
   }, []);
   const deleteBtnClick = async () => {
     await axios.get(`/api/todo/delete/${todoId}`).then((res) => {
-      console.log(res.data);
       navigate("/todo");
     });
   };
@@ -34,11 +33,6 @@ function DetailTodo() {
           <>
             <h1>{todo.title}</h1>
             <p>{todo.content}</p>
-            <ul>
-              {todo.tags.map((tag) => (
-                <li>{tag}</li>
-              ))}
-            </ul>
             <button onClick={() => navigate("/addtodo", { state: { todo } })}>
               수정
             </button>

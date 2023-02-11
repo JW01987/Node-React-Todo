@@ -6,7 +6,8 @@ import RegisterPage from "./components/Login/RegisterPage";
 import MainTodoPage from "./components/Todo/MainTodoPage";
 import DetailTodo from "./components/Todo/DetailTodoPage";
 import AddTodoPage from "./components/Todo/AddTodoPage";
-
+import "./reset.css";
+import "./App.css";
 function App() {
   return (
     <Routes>
