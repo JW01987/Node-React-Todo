@@ -61,7 +61,11 @@ router.get("/search/:searchWord", (req, res) => {
   Todo.find({ $or: options }, (err, todoData) => {
     if (err) return res.json({ success: false, message: "검색 실패" });
     if (todoData.length === 0) {
-      return res.json({ success: true, message: "검색 결과가 없습니다" });
+      return res.json({
+        success: true,
+        message: "검색 결과가 없습니다",
+        todoData: false,
+      });
     }
     return res.json({ success: true, message: "검색 성공", todoData });
   });

@@ -9,6 +9,7 @@ function AddTodoPage({ userData }) {
   let [content, setContent] = useState("");
   let [isUpdate, setIsUpdate] = useState(false);
   let [todoId, setTodoId] = useState("");
+
   useEffect(() => {
     if (location.state !== null) {
       setTitle(location.state.todo.title);
@@ -53,6 +54,7 @@ function AddTodoPage({ userData }) {
       }
     }
   };
+
   return (
     <div>
       <form onSubmit={onSubmit}>
