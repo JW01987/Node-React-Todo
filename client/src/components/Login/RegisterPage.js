@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Auth from "../hoc/auth";
-import "./color.css";
+import styles from "./RegisterPage.module.css";
 function RegisterPage() {
   const navigate = useNavigate();
   const [id, setId] = useState("");
@@ -30,9 +30,7 @@ function RegisterPage() {
     const idRegex = new RegExp(/^([a-zA-Z0-9]){4,9}$/);
     setId(currentId);
     if (!idRegex.test(currentId)) {
-      setIdMsg(
-        "아이디는 영어 대소문자와 숫자의 조합으로 최소 4자리에서 최대 10자리입니다."
-      );
+      setIdMsg("영어 대소문자,숫자 최소 4자리에서 최대 10자리입니다.");
       setIsId(false);
     } else {
       setIdMsg("중복검사를 해야합니다");
@@ -44,7 +42,7 @@ function RegisterPage() {
     const nameRegex = new RegExp(/^[a-zA-Z0-9가-힣]{1,9}$/);
     setName(currentName);
     if (!nameRegex.test(currentName)) {
-      setNameMsg("이름은 영어 대소문자와 한글 숫자로 최대 10자리입니다.");
+      setNameMsg("영어 대소문자,한글,숫자 최대 10자리입니다.");
       setIsName(false);
     } else {
       setNameMsg("올바른 아이디입니다");
@@ -59,7 +57,7 @@ function RegisterPage() {
     setPassword(currentPwd);
     if (!pwdRegex.test(currentPwd)) {
       setPwdMsg(
-        "비밀번호는 숫자와 영어 대소문자, 특수문자 조합으로 최소 6자리에서 20자리입니다."
+        "영어 대소문자,숫자,특수문자 조합으로 최소 6자리에서 20자리입니다."
       );
       setIsPwd(false);
     } else {
@@ -102,29 +100,45 @@ function RegisterPage() {
     navigate("/");
   };
   return (
-    <div className="main-div">
-      <div>
-        <h2>회원가입 페이지</h2>
-        <form onSubmit={onSubmitHandler}>
+    <div className={styles.mainDiv}>
+      <h2 className={styles.title}>회원가입 페이지</h2>
+      <form onSubmit={onSubmitHandler}>
+        <div className={styles.col}>
           <label htmlFor="id">아이디</label>
-          <input
-            placeholder="아이디를 입력하세요"
-            type="text"
-            id="id"
-            onChange={onIdChangeHandler}
-          />
-          <button onClick={idCheckHeandler} disabled={!isId}>
-            중복검사
-          </button>
-          <span className={isId && isIdCheck ? "green" : "red"}>{idMsg}</span>
+          <div className={styles.row}>
+            <input
+              className={styles.idInput}
+              placeholder="아이디를 입력하세요"
+              type="text"
+              id="id"
+              onChange={onIdChangeHandler}
+            />
+            <button
+              onClick={idCheckHeandler}
+              disabled={!isId}
+              className={styles.idBtn}
+            >
+              중복검사
+            </button>
+          </div>
+          <div>
+            <span className={isId && isIdCheck ? styles.green : styles.red}>
+              {idMsg}
+            </span>
+          </div>
+        </div>
+        <div className={styles.col}>
           <label htmlFor="name">이름</label>
           <input
-            placeholder="이름또는 닉네임을 입력하세요"
+            placeholder="이름을 입력하세요"
             type="text"
             id="name"
             onChange={onNameChangeHandler}
           />
-          <span className={isName ? "green" : "red"}>{nameMsg}</span>
+          <span className={isName ? styles.green : styles.red}>{nameMsg}</span>
+        </div>
+
+        <div className={styles.col}>
           <label htmlFor="passwords">비밀번호</label>
           <span></span>
           <input
@@ -133,7 +147,9 @@ function RegisterPage() {
             id="password"
             onChange={onPWDChangeHandler}
           />
-          <span className={isPwd ? "green" : "red"}>{pwdMsg}</span>
+          <span className={isPwd ? styles.green : styles.red}>{pwdMsg}</span>
+        </div>
+        <div className={styles.col}>
           <label htmlFor="confirmPassword">비밀번호 확인</label>
           <input
             placeholder="비밀번호 확인"
@@ -141,16 +157,18 @@ function RegisterPage() {
             id="confirmPassword"
             onChange={onConfimPwdChangeHandler}
           />
-          <span className={isConfirmPwd ? "green" : "red"}>
+          <span className={isConfirmPwd ? styles.green : styles.red}>
             {confirmPwdMsg}
           </span>
-          <button
-            disabled={!(isId && isName && isPwd && isConfirmPwd && isIdCheck)}
-          >
-            회원가입
-          </button>
-        </form>
-      </div>
+        </div>
+
+        <button
+          className={styles.submitBtn}
+          disabled={!(isId && isName && isPwd && isConfirmPwd && isIdCheck)}
+        >
+          회원가입
+        </button>
+      </form>
     </div>
   );
 }

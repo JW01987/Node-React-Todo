@@ -1,0 +1,71 @@
+.loginTitle {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: #407bff;
+}
+
+.mainDiv {
+  background: #f9f9f9;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  box-shadow: 0.3em 0.8em 1em #0032496e;
+  width: 30vw;
+  height: 90vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+.loginForm input {
+  width: 55%;
+  margin-top: 0.3em;
+  font-size: 1em;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 1rem;
+}
+.loginForm label:nth-of-type(even) {
+  margin-top: 1em;
+}
+.loginForm button {
+  margin-top: 1.5em;
+  height: 3em;
+  border: none;
+  border-radius: 1em;
+  cursor: pointer;
+  background-color: #407bff;
+  color: #e0e0e0;
+  font-size: 1em;
+  font-weight: 800;
+}
+.loginForm button:hover {
+  background-color: #264a99;
+}
+.snsLogin {
+  justify-content: baseline;
+}
+.snsLogin svg {
+  margin-top: 0.3em;
+  color: #8cb0ff;
+  cursor: pointer;
+  font-size: 2em;
+  margin-right: 1em;
+}
+
+.snsLogin svg:nth-of-type(3) {
+  margin-right: 0;
+  font-size: 2.5em;
+}
+.snsLogin svg:hover {
+  color: #264a99;
+}
+
+.link {
+  text-decoration: none;
+  color: #264a99;
+}

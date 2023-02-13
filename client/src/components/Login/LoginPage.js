@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
 import Auth from "../hoc/auth";
-
+import styles from "./LoginPage.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGoogle,
+  faTwitter,
+  faApple,
+} from "@fortawesome/free-brands-svg-icons";
 function LoginPage() {
   let navigate = useNavigate();
   const [id, setId] = useState("");
@@ -23,10 +29,10 @@ function LoginPage() {
     navigate("/");
   };
   return (
-    <div className="main-div">
+    <div className={styles.mainDiv}>
+      <h2 className={styles.loginTitle}>로그인 페이지</h2>
       <div>
-        <h2>로그인 페이지</h2>
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} className={styles.loginForm}>
           <label htmlFor="id">아이디</label>
           <input
             placeholder="아이디를 입력하세요"
@@ -43,6 +49,19 @@ function LoginPage() {
           />
           <button>로그인</button>
         </form>
+      </div>
+      <div>
+        <h4 style={{ textAlign: "center", color: "#455a64" }}>완탓찌로그인</h4>
+        <div className={styles.snsLogin}>
+          <FontAwesomeIcon icon={faTwitter} />
+          <FontAwesomeIcon icon={faGoogle} />
+          <FontAwesomeIcon icon={faApple} />
+        </div>
+      </div>
+      <div>
+        <NavLink to="/register" className={styles.link}>
+          아직 회원가입을 안 했다구..?
+        </NavLink>
       </div>
     </div>
   );

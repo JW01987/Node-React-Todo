@@ -1,18 +1,61 @@
-a {
-  color: #386fa4;
+.btnDiv a {
   text-decoration: none;
+  background-color: #407bff;
+  padding: 1em 3em;
+  border-radius: 1em;
+  color: #f5f5f5;
+  font-size: 1em;
 }
 
-a:nth-of-type(even) {
-  padding-left: 0.3em;
+.btnDiv a:nth-of-type(even) {
+  margin-left: 0.3em;
+}
+.btnDiv a:focus {
+  background-color: #264a99;
+}
+.btnDiv a:hover {
+  background-color: #264a99;
 }
 
 .title {
-  font-size: 3em;
+  margin-top: 0.5em;
+  font-size: 3.5em;
   font-weight: 700;
+  margin-bottom: 0.5em;
+  color: #407bff;
+}
+.title:nth-of-type(even) {
+  margin-top: 0.1em;
+  margin-bottom: 1em;
+}
+.title span {
+  color: #f28f8f;
+}
+.btnDiv {
+  margin-top: 5em;
+  padding-left: 4em;
 }
 
-.btnDiv {
-  margin-top: 2em;
-  text-align: center;
+.mainDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.imgDiv {
+  width: 40%;
+  padding-right: 2em;
+}
+.img {
+  width: 100%;
+}
+
+.titleDiv {
+  padding-left: 4em;
+}
+.titleDiv p {
+  font-size: 1.3em;
+  color: #9e9e9e;
+  padding-top: 0.5em;
+}
+.titleDiv p:nth-of-type(1) {
+  padding-top: 0;
 }
