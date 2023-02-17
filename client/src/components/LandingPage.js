@@ -44,7 +44,7 @@ function LandingPage() {
             </div>
             <div className={styles.btnDiv}>
               <NavLink to="/todo">뚜두구경</NavLink>
-              <a onClick={onClickLogout}>가차업이 떠나기</a>
+              <a onClick={onClickLogout}>로그아웃</a>
             </div>
           </div>
           <div className={styles.imgDiv}>

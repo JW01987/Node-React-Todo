@@ -1,0 +1,51 @@
+.mainDiv {
+  background: #f9f9f9;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  box-shadow: 0.3em 0.8em 1em #0032496e;
+  width: 30vw;
+  height: 50vh;
+  padding: 2em;
+}
+
+.title {
+  font-size: 2em;
+  margin-left: 0.2em;
+}
+.content {
+  width: 100%;
+  height: 25vh;
+  background-color: #d0defe;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  overflow: auto;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.updateBtn {
+  background-color: #407bff;
+  font-size: 1em;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5em 1em;
+  color: #f9f9f9;
+  margin-right: 0.5em;
+  margin-left: 0.2em;
+  cursor: pointer;
+}
+.deleteBtn {
+  background-color: #f28f8f;
+  font-size: 1em;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5em 1em;
+  color: #f9f9f9;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  font-size: 1.5em;
+  color: #828282;
+  cursor: pointer;
+}

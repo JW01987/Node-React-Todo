@@ -52,25 +52,31 @@ router.post("/update", (req, res) => {
   );
 });
 
-router.get("/search/:searchWord", (req, res) => {
-  let searchWord = req.params.searchWord;
-  let options = [
-    { title: new RegExp(searchWord) },
-    { content: new RegExp(searchWord) },
-  ];
-  Todo.find({ $or: options }, (err, todoData) => {
-    if (err) return res.json({ success: false, message: "검색 실패" });
-    if (todoData.length === 0) {
-      return res.json({
-        success: true,
-        message: "검색 결과가 없습니다",
-        todoData: false,
-      });
+router.post("/search", (req, res) => {
+  let searchWord = req.body.search;
+  let userId = req.body.userId;
+  Todo.find(
+    {
+      userId,
+      $or: [
+        { title: { $regex: searchWord, $options: "i" } },
+        { content: { $regex: searchWord, $options: "i" } },
+      ],
+    },
+    (err, todoData) => {
+      console.log(todoData);
+      if (err) return res.json({ success: false, message: "검색 실패" });
+      if (todoData.length === 0) {
+        return res.json({
+          success: true,
+          message: "검색 결과가 없습니다",
+          todoData: false,
+        });
+      }
+      return res.json({ success: true, message: "검색 성공", todoData });
     }
-    return res.json({ success: true, message: "검색 성공", todoData });
-  });
+  );
 });
-
 router.get("/delete/:todoId", (req, res) => {
   Todo.findOneAndDelete({ _id: req.params.todoId }, (err) => {
     if (err) return res.json({ success: false, message: "삭제 실패" });

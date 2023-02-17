@@ -3,6 +3,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Auth from "../hoc/auth";
 import styles from "./RegisterPage.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGoogle,
+  faTwitter,
+  faApple,
+} from "@fortawesome/free-brands-svg-icons";
 function RegisterPage() {
   const navigate = useNavigate();
   const [id, setId] = useState("");
@@ -30,7 +36,7 @@ function RegisterPage() {
     const idRegex = new RegExp(/^([a-zA-Z0-9]){4,9}$/);
     setId(currentId);
     if (!idRegex.test(currentId)) {
-      setIdMsg("영어 대소문자,숫자 최소 4자리에서 최대 10자리입니다.");
+      setIdMsg("문자,숫자 포함 4-10자리");
       setIsId(false);
     } else {
       setIdMsg("중복검사를 해야합니다");
@@ -42,7 +48,7 @@ function RegisterPage() {
     const nameRegex = new RegExp(/^[a-zA-Z0-9가-힣]{1,9}$/);
     setName(currentName);
     if (!nameRegex.test(currentName)) {
-      setNameMsg("영어 대소문자,한글,숫자 최대 10자리입니다.");
+      setNameMsg("문자,숫자포함 최대 10자리");
       setIsName(false);
     } else {
       setNameMsg("올바른 아이디입니다");
@@ -56,9 +62,7 @@ function RegisterPage() {
     );
     setPassword(currentPwd);
     if (!pwdRegex.test(currentPwd)) {
-      setPwdMsg(
-        "영어 대소문자,숫자,특수문자 조합으로 최소 6자리에서 20자리입니다."
-      );
+      setPwdMsg("문자,숫자,특수문자 포함 6-20자리");
       setIsPwd(false);
     } else {
       setPwdMsg("올바른 비밀번호입니다");
@@ -102,9 +106,14 @@ function RegisterPage() {
   return (
     <div className={styles.mainDiv}>
       <h2 className={styles.title}>회원가입 페이지</h2>
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={onSubmitHandler} className={styles.registerForm}>
         <div className={styles.col}>
-          <label htmlFor="id">아이디</label>
+          <label htmlFor="id">
+            아이디{" "}
+            <span className={isId && isIdCheck ? styles.green : styles.red}>
+              {idMsg}
+            </span>
+          </label>
           <div className={styles.row}>
             <input
               className={styles.idInput}
@@ -121,45 +130,49 @@ function RegisterPage() {
               중복검사
             </button>
           </div>
-          <div>
-            <span className={isId && isIdCheck ? styles.green : styles.red}>
-              {idMsg}
-            </span>
-          </div>
+          <div></div>
         </div>
         <div className={styles.col}>
-          <label htmlFor="name">이름</label>
+          <label htmlFor="name">
+            이름{" "}
+            <span className={isName ? styles.green : styles.red}>
+              {nameMsg}
+            </span>
+          </label>
           <input
             placeholder="이름을 입력하세요"
             type="text"
             id="name"
             onChange={onNameChangeHandler}
           />
-          <span className={isName ? styles.green : styles.red}>{nameMsg}</span>
         </div>
 
         <div className={styles.col}>
-          <label htmlFor="passwords">비밀번호</label>
+          <label htmlFor="passwords">
+            비밀번호{" "}
+            <span className={isPwd ? styles.green : styles.red}>{pwdMsg}</span>
+          </label>
           <span></span>
           <input
-            placeholder="비밀번호를 입력하세요"
+            placeholder="비밀번호 입력"
             type="password"
             id="password"
             onChange={onPWDChangeHandler}
           />
-          <span className={isPwd ? styles.green : styles.red}>{pwdMsg}</span>
         </div>
         <div className={styles.col}>
-          <label htmlFor="confirmPassword">비밀번호 확인</label>
+          <label htmlFor="confirmPassword">
+            비밀번호 확인{" "}
+            <span className={isConfirmPwd ? styles.green : styles.red}>
+              {confirmPwdMsg}
+            </span>
+          </label>
           <input
             placeholder="비밀번호 확인"
             type="password"
             id="confirmPassword"
             onChange={onConfimPwdChangeHandler}
           />
-          <span className={isConfirmPwd ? styles.green : styles.red}>
-            {confirmPwdMsg}
-          </span>
         </div>
 
         <button
@@ -169,6 +182,17 @@ function RegisterPage() {
           회원가입
         </button>
       </form>
+
+      <div>
+        <h4 style={{ textAlign: "center", color: "#455a64", marginTop: "2em" }}>
+          완탓찌 회원가입
+        </h4>
+        <div className={styles.snsLogin}>
+          <FontAwesomeIcon icon={faTwitter} />
+          <FontAwesomeIcon icon={faGoogle} />
+          <FontAwesomeIcon icon={faApple} />
+        </div>
+      </div>
     </div>
   );
 }

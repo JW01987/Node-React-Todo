@@ -20,14 +20,15 @@
 .loginForm {
   display: flex;
   flex-direction: column;
+  width: 60%;
 }
 .loginForm input {
-  width: 55%;
+  padding: 0.5em 1em;
   margin-top: 0.3em;
-  font-size: 1em;
+  font-size: 1.3em;
   background-color: #e0e0e0;
   border: none;
-  border-radius: 1rem;
+  border-radius: 3px;
 }
 .loginForm label:nth-of-type(even) {
   margin-top: 1em;
@@ -36,7 +37,7 @@
   margin-top: 1.5em;
   height: 3em;
   border: none;
-  border-radius: 1em;
+  border-radius: 3px;
   cursor: pointer;
   background-color: #407bff;
   color: #e0e0e0;
@@ -68,4 +69,8 @@
 .link {
   text-decoration: none;
   color: #264a99;
+}
+
+.btnDiv a {
+  cursor: pointer;
 }

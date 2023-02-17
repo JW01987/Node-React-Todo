@@ -1,0 +1,53 @@
+.mainDiv {
+  background: #f9f9f9;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  box-shadow: 0.3em 0.8em 1em #0032496e;
+  width: 30vw;
+  height: 50vh;
+  padding: 2em;
+}
+.title {
+  box-sizing: border-box;
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  margin-left: 0.2em;
+  padding: 0.3em;
+  border: none;
+  background-color: #f9f9f9;
+  border-bottom: solid 2px #407bff;
+}
+.content {
+  font-size: 1.2em;
+  width: 100%;
+  height: 25vh;
+  background-color: #d0defe;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: none;
+  box-sizing: border-box;
+  padding: 1em;
+  resize: none;
+}
+.saveBtn {
+  background-color: #407bff;
+  font-size: 1em;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5em 1em;
+  color: #f9f9f9;
+  cursor: pointer;
+  margin-right: 0.5em;
+  margin-left: 0.2em;
+}
+.cancelBtn {
+  background-color: #f28f8f;
+  font-size: 1em;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5em 1em;
+  color: #f9f9f9;
+  cursor: pointer;
+}

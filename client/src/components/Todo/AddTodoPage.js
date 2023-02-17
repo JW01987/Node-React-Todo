@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Auth from "../hoc/auth";
+import styles from "./AddTodoPage.module.css";
 function AddTodoPage({ userData }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -56,19 +57,24 @@ function AddTodoPage({ userData }) {
   };
 
   return (
-    <div>
+    <div className={styles.mainDiv}>
       <form onSubmit={onSubmit}>
         <input
+          className={styles.title}
           onChange={onTitleChange}
           value={title}
           placeholder="제목을 넣어주세요"
         />
-        <input
+        <textarea
+          className={styles.content}
           onChange={onContentChange}
           value={content}
           placeholder="내용을 넣어주세요"
         />
-        <button>저장</button>
+        <button className={styles.saveBtn}>저장</button>
+        <button onClick={() => navigate("/todo")} className={styles.cancelBtn}>
+          취소
+        </button>
       </form>
     </div>
   );

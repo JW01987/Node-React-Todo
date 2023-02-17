@@ -31,25 +31,25 @@ function LoginPage() {
   return (
     <div className={styles.mainDiv}>
       <h2 className={styles.loginTitle}>로그인 페이지</h2>
-      <div>
-        <form onSubmit={onSubmitHandler} className={styles.loginForm}>
-          <label htmlFor="id">아이디</label>
-          <input
-            placeholder="아이디를 입력하세요"
-            type="text"
-            id="id"
-            onChange={onIdChangeHandler}
-          />
-          <label htmlFor="password">비밀번호</label>
-          <input
-            placeholder="비밀번호를 입력하세요"
-            type="password"
-            id="password"
-            onChange={onPwdChangeHandler}
-          />
-          <button>로그인</button>
-        </form>
-      </div>
+
+      <form onSubmit={onSubmitHandler} className={styles.loginForm}>
+        <label htmlFor="id">아이디</label>
+        <input
+          placeholder="아이디를 입력하세요"
+          type="text"
+          id="id"
+          onChange={onIdChangeHandler}
+        />
+        <label htmlFor="password">비밀번호</label>
+        <input
+          placeholder="비밀번호를 입력하세요"
+          type="password"
+          id="password"
+          onChange={onPwdChangeHandler}
+        />
+        <button>로그인</button>
+      </form>
+
       <div>
         <h4 style={{ textAlign: "center", color: "#455a64" }}>완탓찌로그인</h4>
         <div className={styles.snsLogin}>
