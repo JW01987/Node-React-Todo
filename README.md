@@ -3,8 +3,34 @@ node.js와 react를 연습해보기 위해 제작
 로그인 기능은 기존에 만들어 둔 [보일러 플레이트](https://github.com/JW01987/NodeReact-Login)를 활용하여 제작했습니다.
 
 ## 주요 기능
-- 로그인기능
-- 할일 리스트
+### 회원가입, 로그인 기능
+
+![메인](https://user-images.githubusercontent.com/63911189/229280899-07aa88a2-28bf-47ec-a267-b03f377630c0.gif)        
+>  메인 페이지입니다.
+> - 리액트 크리에이트 앱을 사용하여 구현하였습니다.    
+
+![회원가입](https://user-images.githubusercontent.com/63911189/229280897-5606a608-e478-4199-9afd-03ab1c8d2967.gif)   
+> 회원가입 페이지입니다. 
+> - MongoDB와 mongoose를 사용했습니다.
+> - 회원가입시 비밀번호를 bcrypt를 이용해 암호화 후 DB에 저장합니다.         
+ 
+![로그인](https://user-images.githubusercontent.com/63911189/229281242-9b8d5913-c21b-4326-9d74-55533fb1a162.gif)        
+>  로그인 페이지입니다.  
+> - 로그인시 jwt와 쿠키를 사용하여 로그인합니다.
+
+### 투두 리스트
+
+![투두메인](https://user-images.githubusercontent.com/63911189/229281233-b1f92517-05b5-4781-9e71-bbc2b1241134.gif)    
+> 투두 리스트 메인 페이지.   
+
+![투두검색](https://user-images.githubusercontent.com/63911189/229281193-9eb66dbd-14c6-4344-8f66-3692b7a9253f.gif)         
+> 투두 리스트 검색 기능   
+
+![투두추가](https://user-images.githubusercontent.com/63911189/229281096-4db05a95-09fd-42f6-b5aa-a03accd85052.gif)    
+> 투두 리스트 추가 
+
+![투두수정삭제](https://user-images.githubusercontent.com/63911189/229281225-c0505293-b5cf-4dbd-99a5-f99b147c3925.gif)     
+> 수정과 삭제 기능   
 
 ## 문제 해결
 - 고차컴포넌트에서 정보 받아오기에서 많은 오류 발생 
